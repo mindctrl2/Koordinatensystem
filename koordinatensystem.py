@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import re
 
-ersetzungen = {
+ersetzen = {
     'sin' : 'np.sin',
     'cos' : 'np.cos',
     'exp': 'np.exp',
@@ -24,10 +24,11 @@ def stringfkt(string):
     for wort in re.findall('[a-zA-Z_]+', string):
         if wort not in erlaubte_worte:
             raise ValueError(
-                '"{}" ist verboten'.format(word)
+                '"{}" ist ein verbotener Ausdruck'.format(word)
             )
-
-    for alt, neu in ersetzungen.items():
+			
+	# Wörter ersetzen
+    for alt, neu in ersetzen.items():
         string = string.replace(alt, neu)
 
     def func(x):
